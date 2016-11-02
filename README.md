@@ -1,6 +1,6 @@
 # [GeoExplorer](https://lzys90.shinyapps.io/GeoExplorer/)
 
-An example of a Shiny app powered by Leaflet. Data is from the [Predator Problem](https://github.com/lyzs90/PredatorProblem) exercise.
+An interactive map powered by Leaflet and Shiny. Data is from the [Predator Problem](https://github.com/lyzs90/PredatorProblem) exercise.
 
 ## Dependencies
 
