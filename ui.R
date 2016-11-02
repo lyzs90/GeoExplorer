@@ -12,28 +12,34 @@ library(leaflet)
 library(RJSONIO)
 library(DT)
 
-fluidPage(theme = "darkly.css", # paper.css
+fluidPage(theme = "paper.css",
     
     titlePanel("GeoExplorer"),
+            
+        tags$style(type="text/css", "
+                   #loadmessage {
+                   position: fixed;
+                   top: 0px;
+                   left: 0px;
+                   width: 100%;
+                   text-align: center;
+                   font-weight: bold;
+                   font-size: 100%;
+                   color: #000000;
+                   background-color: #d3d3d3;
+                   z-index: 105;
+                   }
+                   "),
     
-    sidebarLayout(
-        sidebarPanel(
-            h5("TODO:"),
-            tags$ul(
-                tags$li("Geocode assets"), 
-                tags$li("Shade choropleth"), 
-                tags$li("Style/size map markers"),
-                tags$li("User interactivity"),
-                tags$li("Reduce lag. Probably don't have to use subzone.")
-            )
-        ),
         mainPanel(
+            conditionalPanel(condition="$('html').hasClass('shiny-busy')",
+                             tags$div("Loading...",id="loadmessage")),
             tabsetPanel(
                 tabPanel("Interactive Map", leafletOutput("map")),
                 tabPanel("View Data", DT::dataTableOutput("table"))
             )
-        )
-    ), 
+        ),
+
     title = "GeoExplorer"
     
 )
